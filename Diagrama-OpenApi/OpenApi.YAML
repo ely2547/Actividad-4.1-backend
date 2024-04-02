@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Backend API
+  version: 1.0.0
+  description: API for managing products and user authentication
+
+servers:
+  - url: http://localhost:3000
+    description: Local server
+
+paths:
+  /api/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterUser'
+      responses:
+        '200':
+          description: User registered successfully
+        '400':
+          description: Error registering user
+
+  /api/login:
+    post:
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginUser'
+      responses:
+        '200':
+          description: User logged in successfully
+        '400':
+          description: Error logging in
+
+  /api/logout:
+    post:
+      summary: Logout user
+      responses:
+        '200':
+          description: User logged out successfully
+
+  /api/profile:
+    get:
+      summary: Get user profile
+      responses:
+        '200':
+          description: User profile retrieved successfully
+        '400':
+          description: Error getting user profile
+
+  /api/productos:
+    post:
+      summary: Add a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewProduct'
+      responses:
+        '200':
+          description: Product added successfully
+        '400':
+          description: Error adding product
+
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: Products retrieved successfully
+        '400':
+          description: Error getting products
+
+components:
+  schemas:
+    RegisterUser:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    LoginUser:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+
+    NewProduct:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: number
+        availability:
+          type: boolean
+
+
+

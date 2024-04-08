@@ -16,8 +16,7 @@ import { registerSchema, loginSchema } from "./src/schemas/auth.schema.js";
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb+srv://anggemarigi:Pancho20.@cluster2.vhsetpj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster2', {
-      serverSelectionTimeoutMS: 500000,
-      socketTimeoutMS: 4500000,
+  
     });
     console.log("Base de datos conectada exitosamente");
   } catch (error) {
